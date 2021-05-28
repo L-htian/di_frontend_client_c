@@ -22,6 +22,10 @@
           width="130">
       </el-table-column>
       <el-table-column
+          prop="lesson_time"
+          label="课时">
+      </el-table-column>
+      <el-table-column
           prop="teacher"
           label="授课老师">
       </el-table-column>
@@ -60,6 +64,7 @@ export default {
         ss.teacher = re[i].teacher
         ss.classroom = re[i].classroom
         ss.chooseCount = re[i].chooseCount
+        ss.lesson_time = re[i].lesson_time
         if (re[i].isShared == 1) {
           ss.isShared = "是"
         } else if (re[i].isShared == 0) {

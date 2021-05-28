@@ -23,6 +23,10 @@
           width="130">
       </el-table-column>
       <el-table-column
+          prop="lesson_time"
+          label="课时">
+      </el-table-column>
+      <el-table-column
           prop="teacher"
           label="授课老师">
       </el-table-column>
@@ -55,6 +59,9 @@
         <el-form-item label="课程学分">
           <el-input v-model="lessonToModify.lesson_point" :disabled="false" autocomplete="off"></el-input>
         </el-form-item>
+        <el-form-item label="课时">
+          <el-input v-model="lessonToModify.lesson_time" :disabled="false" autocomplete="off"></el-input>
+        </el-form-item>
         <el-form-item label="任课老师">
           <el-input v-model="lessonToModify.teacher" :disabled="false" autocomplete="off"></el-input>
         </el-form-item>
@@ -83,6 +90,9 @@
         </el-form-item>
         <el-form-item label="课程学分">
           <el-input v-model="lessonToModify.lesson_point" :disabled="false" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="课时">
+          <el-input v-model="lessonToModify.lesson_time" :disabled="false" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="任课老师">
           <el-input v-model="lessonToModify.teacher" :disabled="false" autocomplete="off"></el-input>
@@ -136,6 +146,7 @@ export default {
           this.lessonData[i].teacher = this.lessonToModify.teacher
           this.lessonData[i].classroom = this.lessonToModify.classroom
           this.lessonData[i].isShared = this.lessonToModify.isShared
+          this.lessonData[i].lesson_time=this.lessonToModify.lesson_time
         }
       }
       if (updateAdmLesson(this.lessonToModify)) {
@@ -151,7 +162,7 @@ export default {
       this.lessonData.push($.extend({}, this.lessonToModify))
       this.addLessonVisible = false
       console.log(this.lessonData)
-      if (updateAdmLesson(this.lessonToModify) {
+      if (updateAdmLesson(this.lessonToModify)) {
         this.$message({
           type: 'success',
           message: '添加成功'
@@ -166,6 +177,7 @@ export default {
       this.lessonToModify.teacher = ''
       this.lessonToModify.classroom = ''
       this.lessonToModify.isShared = ''
+      this.lessonToModify.lesson_time = ''
     },
     initInfo() {
       let re = getLessonInfoAdmNeed()
@@ -176,6 +188,7 @@ export default {
         ss.lesson_point = re[i].lesson_point
         ss.teacher = re[i].teacher
         ss.classroom = re[i].classroom
+        ss.lesson_time = re[i].lesson_time
         if (re[i].isShared == 1) {
           ss.isShared = "是"
         } else if (re[i].isShared == 0) {
@@ -205,6 +218,7 @@ export default {
           this.lessonToModify.teacher = this.lessonData[i].teacher
           this.lessonToModify.classroom = this.lessonData[i].classroom
           this.lessonToModify.isShared = this.lessonData[i].isShared
+          this.lessonToModify.lesson_time = this.lessonData[i].lesson_time
         }
       }
     },
@@ -248,7 +262,8 @@ export default {
         lesson_point: '',
         teacher: '',
         classroom: '',
-        isShared: ''
+        isShared: '',
+        lesson_time: ''
       }
 
     }
