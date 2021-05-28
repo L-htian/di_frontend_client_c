@@ -22,7 +22,7 @@
           width="130">
       </el-table-column>
       <el-table-column
-          prop="teachers"
+          prop="teacher"
           label="授课老师">
       </el-table-column>
       <el-table-column
@@ -56,13 +56,30 @@ export default {
           lesson_id: '12354',
           lesson_name: '数据集成',
           lesson_point: '2',
-          teachers: '刘峰',
+          teacher: '刘峰',
           classroom: '教学楼202',
           isShared: '否',
           chooseCount: 120
         })
       }
-      this.lessonData = getLessonInfoAdmNeed()
+      let re = getLessonInfoAdmNeed()
+      for (let i = 0; i < re.length; i++) {
+        let ss = {}
+        ss.lesson_id = re[i].lesson_id
+        ss.lesson_name = re[i].lesson_name
+        ss.lesson_point = re[i].lesson_point
+        ss.teacher = re[i].teacher
+        ss.classroom = re[i].classroom
+        ss.chooseCount = re[i].chooseCount
+        if (re[i].isShared == 1) {
+          ss.isShared = "是"
+        } else if (re[i].isShared == 0) {
+          ss.isShared = "否"
+        } else {
+          ss.isShared = "其他学院"
+        }
+        this.lessonData.push(ss)
+      }
     }
   },
   data(){

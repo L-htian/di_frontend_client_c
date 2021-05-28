@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
 const api = {
-    common: 'http://localhost:8089/clientC/api/common'
+    common: 'http://localhost:8090/clientC/api/common'
 }
 
 export function validate(form) {
