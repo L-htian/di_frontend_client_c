@@ -1,12 +1,12 @@
-const login = {
+const stuPersonalInfo={
     state: {
-        login_account:'',
+        stu_id:'',
     },
     mutations:{
-        set_account:function (state,data){
-            state.login_account = data
+        set_stuId:function (state,data){
+            state.stu_id = data
         }
     },
     action:{}
 }
-export default login
+export default stuPersonalInfo

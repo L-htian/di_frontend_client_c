@@ -43,12 +43,6 @@ export default {
   },
   methods: {
     getInfo() {
-      this.admin_Info = {
-        // name: '刘峰',
-        // sex: '男',
-        account: '181250000',
-        password: '123456'
-      }
       this.admin_Info = getAdmInfo(this.login_account)
     },
     changePassword() {
